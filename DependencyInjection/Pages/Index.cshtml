@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+
+@inject DependencyInjection.Services.ITimeService TimeService
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @{
+        string message = TimeService.Time;
+        @:
+        <h1>Time: @message</h1>
+        <h1>Time: @Model.PrintTime()</h1>
+        <h1>@Model.Message1</h1>
+        <h1>@Model.Message2</h1>
+    }
+</body>
+</html>
