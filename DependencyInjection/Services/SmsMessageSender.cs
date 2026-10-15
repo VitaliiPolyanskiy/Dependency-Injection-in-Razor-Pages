@@ -1,10 +1,6 @@
-﻿namespace DependencyInjection.Services
+﻿namespace DependencyInjection.Services;
+
+public class SmsMessageSender : IMessageSender
 {
-    public class SmsMessageSender : IMessageSender
-    {
-        public string Send()
-        {
-            return "Sent by SMS";
-        }
-    }
+    public string Send() => "Надіслано через SMS";
 }

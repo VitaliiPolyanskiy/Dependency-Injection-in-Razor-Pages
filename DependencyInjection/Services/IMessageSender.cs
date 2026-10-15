@@ -1,7 +1,6 @@
-﻿namespace DependencyInjection.Services
+﻿namespace DependencyInjection.Services;
+
+public interface IMessageSender
 {
-    public interface IMessageSender
-    {
-        string Send();
-    }
+    string Send();
 }

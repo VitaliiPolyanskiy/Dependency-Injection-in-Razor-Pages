@@ -2,27 +2,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace DependencyInjection.Pages
+namespace DependencyInjection.Pages;
+
+public class IndexModel(IEnumerable<IMessageSender> sendersServices) : PageModel
 {
-    public class IndexModel : PageModel
+    public string Message1 { get; private set; } = string.Join("", sendersServices.Select(service => $"<h1>{service.Send()}</h1>"));
+
+    public string Message2 { get; private set; } = string.Empty;
+
+    public void OnGet([FromServices] IMessageSender methodLevelMessageSender)
     {
-        public string Message1 { get; private set; } = "";
-        public string Message2 { get; private set; } = "";
+        Message2 = methodLevelMessageSender.Send();
+    }
 
-        public IndexModel(IMessageSender MessageSender)
-        {
-            Message1 = MessageSender.Send();
-        }
-
-        public void OnGet([FromServices] IMessageSender MessageSender)
-        {
-            Message2 = MessageSender.Send();
-        }
-
-        public string PrintTime()
-        {
-            var timeService = HttpContext.RequestServices.GetService<ITimeService>();
-            return timeService.Time;
-        }
+    public string PrintTime()
+    {
+        var timeService = HttpContext.RequestServices.GetRequiredService<ITimeService>();
+        return timeService.Time;
     }
 }

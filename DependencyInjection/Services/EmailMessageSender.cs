@@ -1,10 +1,6 @@
-﻿namespace DependencyInjection.Services
+﻿namespace DependencyInjection.Services;
+
+public class EmailMessageSender : IMessageSender
 {
-    public class EmailMessageSender : IMessageSender
-    {
-        public string Send()
-        {
-            return "Sent by Email";
-        }
-    }
+    public string Send() => "Надіслано електронною поштою";
 }

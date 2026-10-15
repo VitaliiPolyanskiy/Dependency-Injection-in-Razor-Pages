@@ -1,7 +1,6 @@
-﻿namespace DependencyInjection.Services
+﻿namespace DependencyInjection.Services;
+
+public class SimpleTimeService : ITimeService
 {
-    public class SimpleTimeService : ITimeService
-    {
-        public string Time => DateTime.Now.ToString("HH:mm:ss");
-    }
+    public string Time => DateTime.Now.ToString("HH:mm:ss");
 }

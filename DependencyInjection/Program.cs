@@ -2,8 +2,11 @@ using DependencyInjection.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Додаємо сервіси Razor Pages
 builder.Services.AddRazorPages();
+
+// Реєструємо сервіси у контейнері залежностей
+builder.Services.AddScoped<IMessageSender, EmailMessageSender>();
 builder.Services.AddScoped<IMessageSender, SmsMessageSender>();
 builder.Services.AddScoped<ITimeService, SimpleTimeService>();
 

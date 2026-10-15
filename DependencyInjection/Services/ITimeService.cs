@@ -1,7 +1,6 @@
-﻿namespace DependencyInjection.Services
+﻿namespace DependencyInjection.Services;
+
+public interface ITimeService
 {
-    public interface ITimeService
-    {
-        string Time { get; }
-    }
+    string Time { get; }
 }
